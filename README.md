@@ -1,3 +1,9 @@
+This is a modified version of the official portworx enterprise module: https://github.com/portworx/terraform-ibm-portworx-enterprise
+
+I modified the repository to make it compatible with automation such as IBM Cloud Schematics/Blueprints.
+
+Module I added for VPC Portworx provisioning is found in ```vpc_portworx``` folder. 
+
 # Terraform Module for Portworx Enterprise on IBM Cloud
 IBM Cloud provides an option to provision Portworx Enterprise on IKS cluster through IBM Catalog. This repo hosts the terraform module which can be used in conjunction with existing terraform scripts to provision Portworx Enterprise on IKS.
 
