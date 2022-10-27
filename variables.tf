@@ -117,14 +117,6 @@ variable "tags" {
 
 
 variable "cloud_drive_options" {
-  description = <<-_EOT
-  cloud_drive_options = {
-    max_storage_node_per_zone : "Maximum number of strorage nodes per zone, you can set this to the maximum worker nodes in your cluster"
-    num_cloud_drives : "Number of cloud drives per zone, Max: 3"
-    cloud_drives_sizes : "Size of Cloud Drive in GB, ex: [50, 60, 70], the number of elements should be same as the value of `num_cloud_drives`"
-    storage_classes : "Storage Classes for each cloud drive, ex: [ "ibmc-vpc-block-10iops-tier", "ibmc-vpc-block-5iops-tier", "ibmc-vpc-block-general-purpose"], the number of elements should be same as the value of `num_cloud_drives`"
-  }
-  _EOT
   type = object({
     max_storage_node_per_zone = number
     num_cloud_drives          = number
