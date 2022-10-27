@@ -2,19 +2,16 @@ variable "ibmcloud_api_key" {
   description = "Get the ibmcloud api key from https://cloud.ibm.com/iam/apikeys"
   type        = string
   sensitive   = true
-  nullable    = false
 }
 
 variable "cluster_name" {
   description = "Name of existing IKS cluster"
   type        = string
-  nullable    = false
 }
 
 variable "resource_group" {
   description = "Resource group of existing IKS Cluster "
   type        = string
-  nullable    = false
 }
 
 
@@ -36,10 +33,11 @@ variable "etcd_options" {
     etcd_secret_name             = null
     external_etcd_connection_url = null
   }
+  /*
   validation {
     condition     = (var.etcd_options.use_external_etcd && (var.etcd_options.external_etcd_connection_url != null) && (var.etcd_options.etcd_secret_name != null)) || (!var.etcd_options.use_external_etcd && (var.etcd_options.external_etcd_connection_url == null) && (var.etcd_options.etcd_secret_name == null))
     error_message = "The value of `etcd_secret_name` and `external_etcd_connection_url` should be set when `use_external_etcd` is set to `true`"
-  }
+  }*/
 }
 
 
@@ -47,7 +45,6 @@ variable "region" {
   description = "The region Portworx will be installed in: us-south, us-east, eu-gb, eu-de, jp-tok, au-syd, etc."
   default     = "us-south"
   type        = string
-  nullable    = false
 }
 
 variable "cluster_config_path" {
@@ -58,10 +55,11 @@ variable "pwx_plan" {
   description = "Portworx plan type "
   type        = string
   default     = "px-enterprise"
+  /*
   validation {
     condition     = contains(["px-enterprise", "px-dr-enterprise"], var.pwx_plan)
     error_message = "The value of `pwx_plan` should be any of the following:\npx-enterprise\npx-dr-enterprise"
-  }
+  }*/
 }
 
 variable "secret_type" {
@@ -107,8 +105,6 @@ variable "upgrade_portworx" {
 variable "portworx_service_name" {
   type        = string
   description = "Name to be provided to the portworx cluster to be deployed"
-  default     = "portworx-enterprise"
-  nullable    = false
 }
 
 
@@ -134,6 +130,7 @@ variable "cloud_drive_options" {
     cloud_drives_sizes        = list(number)
     storage_classes           = list(string)
   })
+  /*
   validation {
     condition     = var.cloud_drive_options.num_cloud_drives >= 1 && var.cloud_drive_options.num_cloud_drives <= 3
     error_message = "The value of `num_cloud_drives` should be an integer, min = 1 and max = 3"
@@ -147,5 +144,5 @@ variable "cloud_drive_options" {
       for sc in var.cloud_drive_options.storage_classes : contains(["ibmc-vpc-block-10iops-tier", "ibmc-vpc-block-5iops-tier", "ibmc-vpc-block-general-purpose", "ibmc-vpc-block-retain-10iops-tier", "ibmc-vpc-block-retain-5iops-tier", "ibmc-vpc-block-retain-general-purpose"], sc)
     ])
     error_message = "The value of `storage_classes` should be a list of strings\nAvailable Options: ibmc-vpc-block-10iops-tier\nibmc-vpc-block-5iops-tier\nibmc-vpc-block-general-purpose\nibmc-vpc-block-retain-10iops-tier\nibmc-vpc-block-retain-5iops-tier\nibmc-vpc-block-retain-general-purpose"
-  }
+  }*/
 }

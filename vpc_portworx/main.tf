@@ -113,6 +113,7 @@ variable region {
 
 variable max_storage_node_per_zone{
   type = number 
+  default = 2
 }
 
 variable num_cloud_drives{
