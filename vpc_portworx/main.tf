@@ -1,5 +1,5 @@
 module "portworx-enterprise" {
-  source  = "../"
+  source  = "https://github.com/mattokc35/terraform-portworx-ibmcloud.git"
   # insert the 3 required variables here
   region                    = "${var.region}"
   cluster_name              = "${var.cluster_name}"
